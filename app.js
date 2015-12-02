@@ -34,33 +34,8 @@ app.listen(appEnv.port, function() {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*var env;
-var key;
-function findKey(obj,lookup) {
-   for (var i in obj) {
-      if (typeof(obj[i])==="object") {
-         if (i.toUpperCase().indexOf(lookup) > -1) {
-            // Found the key
-            return i;
-         }
-         findKey(obj[i],lookup);
-      }
-   }
-   return -1;
-}
-if (process.env.VCAP_SERVICES) {
-    env = JSON.parse(process.env.VCAP_SERVICES);
-    key = findKey(env,"SQL Database-vr");
-    console.log(key);
-}
-
-
-var credentials = env[key][0].credentials;
-var dsnString = "DRIVER={DB2};DATABASE=" + credentials.db + ";UID=" + credentials.username + ";PWD=" + 
-                      credentials.password + ";HOSTNAME=" + credentials.hostname + ";port=" + credentials.port;*/
-      /*Connect to the database server*/
-
-var SQLDBconfig = appEnv.getService("SQL Database-vr");
+//sql service name
+var SQLDBconfig = appEnv.getService("");
 var db2 = SQLDBconfig.credentials;
 db2.db = SQLDBconfig.credentials.db;
 db2.username = SQLDBconfig.credentials.username;
